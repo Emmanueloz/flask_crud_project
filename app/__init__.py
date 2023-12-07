@@ -3,14 +3,12 @@ Api de proyectos
 """
 
 from flask import Flask, render_template
-from app.config import Config
-from app.utils.db import db
+from .config import Config
+from .utils.db import db
 import werkzeug
 from flask_login import LoginManager
 
-from app.config import Config
-from app.models.users import UserLogin
-from app.utils.db import db
+from .models.users import UserLogin
 
 login_manager = LoginManager()
 login_manager.login_view = 'AuthRoute.get_login'
