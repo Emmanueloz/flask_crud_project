@@ -50,6 +50,8 @@ Cambiar el nombre del archivo `.env_example.env` por `.env` y coloca los valores
   ```
   cambia el usuario, contraseña, host y la base de datos que corresponda
 
+También debes crear la base de datos en mysql con el nombre que especificaste en la variable de conexión, ten en cuenta que el usuario debe tener permisos para la bd
+
 Ya que todo esta listo, ejecuta el siguiente comando para arrancar el proyecto
 
 ```bash
