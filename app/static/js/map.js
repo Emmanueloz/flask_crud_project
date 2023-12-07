@@ -30,12 +30,19 @@ const editLocation = (e) => {
   fetch(`${URL_LOCATION_PUT}${idProyect}`, {
     method: "PUT",
     body: JSON.stringify(bodyLocation),
-    headers: {
-      "Content-Type": "application/json",
-      "x-access-tokens": X_ACCESS_TOKENS,
-    },
+    headers: HEADERS,
   })
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        Swal.fire({
+          icon: "error",
+          title: "Error al modificar el la ubicación",
+          text: response.status,
+        });
+        return;
+      }
+      return response.json();
+    })
     .then((data) => {
       latitude = newLatitude.textContent;
       longitude = newLongitude.textContent;
