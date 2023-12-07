@@ -1,0 +1,82 @@
+{% extends "base.jinja" %}
+{% block title %}
+  Proyecto
+{% endblock title %}
+
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='leaflet/leaflet.css')}}">
+<link rel="stylesheet" href="{{url_for('static',filename='css/map.css')}}">
+{% endblock styles %}
+
+{% block content %}
+
+{% if error %}
+<main class="container text-center" style="height: 100dvh;">
+  <section class="row align-items-center">
+    <div class="col text-bg-danger p-2">
+      <p >{{error['error']}}</p>
+    </div>
+  </section>
+</main>
+{% else %}
+<main class="container">
+  <h1>Proyecto {{ id }}: {{ title }}</h1>
+  <p class="fw-bold mb-1">Descripción</p>
+  <p>{{ description }}</p>
+  <div class="table-responsive">
+    <table class="table table-primary">
+      <thead>
+        <tr>
+          <th scope="col">Fecha de inicio</th>
+          <th scope="col">Fecha final</th>
+          <th scope="col">Empresa</th>
+          <th scope="col">Terminado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="">
+          <td>{{ start_date }}</td>
+          <td>{{ end_date }}</td>
+          <td>{{ company }}</td>
+          <td>{{ is_finish }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <section>
+  <h4>Ubicación</h4>
+  <div class="table-responsive">
+    <table class="table table-primary" id="tableLocation">
+      <thead>
+        <tr>
+          <th scope="col">Latitud</th>
+          <th scope="col">Longitud</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        
+      </tbody>
+    </table>
+  </div>
+  
+  <div id="map"></div>
+  </section>
+</main>
+{% endif %}
+{% endblock content %}
+{% block scripts %}
+{{ super() }}
+{% if not error %}
+<script>
+  let idProject = "{{id}}"
+  let latitude = {{latitude}}
+  let longitude = {{longitude}}
+  const URL_LOCATION_PUT = "/api/proyectos/edit-location/";
+</script>
+<script src="{{url_for('static',filename='js/components.js')}}"></script>
+<script src="{{url_for('static',filename='leaflet/leaflet.js')}}"></script>
+<script src="{{url_for('static',filename='js/map.js')}}" ></script>
+{% endif %}
+{% endblock scripts %}

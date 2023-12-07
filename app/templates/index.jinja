@@ -1,0 +1,53 @@
+{% extends "base.jinja" %}
+
+{% block title %}
+    CRUD de proyectos
+{% endblock title %}
+{% block styles %}
+  {{ super() }}
+  <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+{% endblock styles %}
+{% block content %}
+<header>
+  <h1 class="fw-bold">CRUD de proyectos</h1>
+</header>
+<main class="p-2">
+  <section class="mb-2">
+    <button id="formRowProject" class="btn btn-primary">Agregar</button>
+  </section>
+  <section class="table-responsive">
+    <table id="tableProject" class="table table-striped">
+      <thead>
+        <tr class="table-primary">
+          <th>ID</th>
+          <th>Titulo</th>
+          <th>Descripción</th>
+          <th>Fecha de inicio</th>
+          <th>Fecha final</th>
+          <th>Empresa</th>
+          <th>Terminado</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <div class="msg-container">
+      <img src="{{url_for('static',filename='img/loading.gif')}}" id="img-load" >
+      <p class="text-center fs-3" id="msg"></p>
+    </div>
+  </section>
+</main>
+{% endblock content %}
+
+{% block scripts %}
+{{ super() }}
+<script>
+  const URL_GET = '{{url_for("proyectos.get_proyectos")}}';
+  const URL_POST = '{{url_for("proyectos.post_proyecto")}}';
+  const ROUTE_PROJECT = '/proyecto/'
+  const URL_PUT = "/api/proyectos/edit/";
+  const URL_DELETE = "/api/proyectos/delete/";
+</script>
+<script src="{{url_for('static',filename='js/components.js')}}"></script>
+<script src="{{url_for('static',filename='js/main.js')}}"></script>
+{% endblock scripts %}

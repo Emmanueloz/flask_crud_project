@@ -1,0 +1,38 @@
+.navbar {
+  background-color: cornflowerblue;
+  max-height: 45px;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar > .navbar-ul {
+  display: flex;
+  width: 50%;
+  height: 100%;
+  align-items: center;
+}
+
+.navbar > .navbar-ul-right {
+  justify-content: end;
+}
+
+.navbar > .navbar-ul > .navbar-ul__logo {
+  max-width: 30px;
+  display: inline-block;
+  margin-right: 10px;
+  border-radius: 10%;
+  background-color: whitesmoke;
+}
+
+.navbar > .navbar-ul > .navbar-ul__item {
+  list-style: none;
+  margin-right: 10px;
+  color: aliceblue;
+}
+
+.navbar > .navbar-ul > .navbar-ul__item > a {
+  text-decoration: none;
+  color: aliceblue;
+  font-weight: bold;
+}

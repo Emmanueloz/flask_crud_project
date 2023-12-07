@@ -1,0 +1,11 @@
+.msg-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#img-load {
+  display: inline-block;
+  width: 30px;
+  margin: 0 auto;
+}

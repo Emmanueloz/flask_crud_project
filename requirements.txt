@@ -1,0 +1,7 @@
+Flask
+Flask-SQLAlchemy
+python-dotenv
+pymysql
+PyJWT
+datetime
+flask-login

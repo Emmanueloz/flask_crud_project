@@ -1,0 +1,38 @@
+<nav class="navbar">
+  <ul class="navbar-ul">
+    <img
+      src="{{url_for('static',filename='img/favicon.ico')}}"
+      class="navbar-ul__logo"
+    />
+    {% if current_user.is_authenticated %}
+    <li class="navbar-ul__item">
+      <a href="{{url_for('proyecto_routes.get_proyectos')}}">Ir a inicio</a>
+    </li>
+    {% else %}
+    <li class="navbar-ul__item fw-bold">
+    Crud de proyectos
+    </li>
+    {% endif %}
+  </ul>
+  <ul class="navbar-ul navbar-ul-right">
+    {% if current_user.is_authenticated %}
+    <li class="navbar-ul__item">
+      <a href="{{url_for('AuthRoute.user')}}"> 
+        <strong>Usuario:</strong>
+        {{current_user.id | capitalize}}  
+      </a>
+    </li>
+    <li class="navbar-ul__item">
+     <strong>Email</strong>
+      {{current_user.email}}
+    </li>
+    <li class="navbar-ul__item">
+      <a id="link_logout" href="{{url_for('AuthRoute.logout')}}">Logout</a>
+    </li>
+    {% else %}
+    <li class="navbar-ul__item">
+      <a href="{{url_for('AuthRoute.get_login')}}">Signup/Login</a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>
